@@ -1,1 +1,53 @@
-<p>clientes works!</p>
+<div class="row">
+  <div class="col-8 m-auto">
+    <form [formGroup]="formGroupClient">
+    <div class="mb-3">
+      <div class="display-6 text-center">
+        Cadastro de Clientes
+      </div>
+      <label for="name" class="form-label">Nome:</label>
+      <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nome">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+    </div>
+    <div class="mb-3">
+      <label for="numero" class="form-label">Numero:</label>
+      <input type="numero" formControlName="numero" class="form-control" id="numero" placeholder="numero">
+    </div>
+    <label for="endereco" class="form-label">Endereco:</label>
+    <input type="endereco" formControlName="endereco" class="form-control" id="endereco" placeholder="Endereço">
+    <div class="mb-3 d-flex justify-content-end">
+      <button class="btn btn-primary me-1" (click)="save()">Salvar</button>
+      <button class="btn btn-primary" (click)="clean()">Limpar</button>
+    </div>
+    </form>
+  </div>
+
+<table class="table table-bordered border-dark">
+  <thead class="table-dark ">
+    <tr class="table-active">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Email</th>
+      <th scope="col">Numero</th>
+      <th scope="col">endereco</th>
+      <th scope="col">Opções</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let Clientes of Clientes">
+      <th scope="row">{{Clientes.id}}</th>
+      <td>{{Clientes.name}}</td>
+      <td>{{Clientes.email}}</td>
+      <td>{{Clientes.numero}}</td>
+      <td>{{Clientes.endereco}}</td>
+      <td>
+        <button class="btn btn-primary me-1" (click)="edit(Clientes)">Editar</button>
+        <button class="btn btn-primary" (click)="delete(Clientes)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

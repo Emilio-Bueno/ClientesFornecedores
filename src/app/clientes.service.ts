@@ -8,10 +8,10 @@ import { Clientes } from './Clientes';
   providedIn: 'root'
 })
 export class ClientesService {
-  url = "http://localhost:3000/Clientes";
+  url = "http://localhost:3000/clients";
   constructor(private http: HttpClient) { }
 
-  getClients(): Observable<Clientes[]>{
+  getClientes(): Observable<Clientes[]>{
     return this.http.get<Clientes[]>(this.url);
   }
 

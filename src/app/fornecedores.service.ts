@@ -9,7 +9,7 @@ import { Fornecedores } from './Fornecedores';
   providedIn: 'root'
 })
 export class FornecedoresService {
-  url = "http://localhost:3000/Fornecedores";
+  url = "http://localhost:3000/suppliers";
   constructor(private http: HttpClient) { }
 
   getFornecedores(): Observable<Fornecedores[]>{
