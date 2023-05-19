@@ -1,26 +1,4 @@
 {
-  "clients": [
-    {
-      "id": 1,
-      "name": "1",
-      "email": "1",
-      "numero": "1",
-      "endereco": "1"
-    },
-    {
-      "id": 2,
-      "name": "2",
-      "email": "2",
-      "numero": "2",
-      "endereco": "2"
-    }
-  ],
-  "suppliers": [
-    {
-      "id": 1,
-      "name": "1",
-      "telefone": "1",
-      "endereco": "1"
-    }
-  ]
+  "clients": [],
+  "suppliers": []
 }
