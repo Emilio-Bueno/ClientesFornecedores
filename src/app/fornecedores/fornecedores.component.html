@@ -15,12 +15,20 @@
     <label for="endereco" class="form-label">Endereco:</label>
     <input type="endereco" formControlName="endereco" class="form-control" id="endereco" placeholder="Endereço">
     <div class="mb-3 d-flex justify-content-end">
-      <button class="btn btn-primary me-1 mt-2" (click)="save()">Salvar</button>
-      <button class="btn btn-primary mt-2" (click)="clean()">Limpar</button>
-    </div>
-    </form>
-  </div>
-
+      <div class="mb-3 d-flex justify-content-center">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <div class="form-group form-check">
+              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+              <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+              <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Aceite os termos de uso</div>
+          </div>
+          <div>
+              <button class="btn btn-primary mt-2 mr-1" (click)="save()">Submit</button>
+              <button class="btn btn-secondary mt-2" type="reset" (click)="onReset()">Reset</button>
+              <button class="btn btn-primary mt-2" (click)="clean()">Limpar</button>
+          </div>
+<div>
+</div>
 <table class="table table-bordered border-dark">
   <thead class="table-dark ">
     <tr class="table-active">

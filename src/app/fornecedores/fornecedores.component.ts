@@ -1,6 +1,6 @@
 import { FornecedoresService } from './../fornecedores.service';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Fornecedores } from '../Fornecedores';
 
 
@@ -13,6 +13,8 @@ export class FornecedoresComponent {
   Fornecedores: Fornecedores[] = [];
   isEditing : boolean = false;
   formGroupClient: FormGroup;
+  submitted = false;
+  form: any;
 
   constructor(private FornecedoresService: FornecedoresService, private formBuilder: FormBuilder) {
     this.formGroupClient = formBuilder.group({
@@ -22,6 +24,25 @@ export class FornecedoresComponent {
       endereco: ['']
     });
   }
+  ngOnInit(): void {
+    this.loadFornecedores();
+    this.form = this.formBuilder.group({
+      acceptTerms: [false, Validators.requiredTrue]
+  });
+  }
+  get f() { return this.form.controls; }
+  onSubmit() {
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+  }
+  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.form.value, null, 4));
+}
+
+onReset() {
+    this.submitted = false;
+    this.form.reset();
+}
 
   clean(){
     this.formGroupClient.reset();
@@ -49,9 +70,6 @@ export class FornecedoresComponent {
     }
   }
 
-  ngOnInit(): void {
-    this.loadFornecedores();
-  }
 
   loadFornecedores() {
     this.FornecedoresService.getFornecedores().subscribe({

@@ -1,4 +1,12 @@
 {
-  "clients": [],
+  "clients": [
+    {
+      "id": 1,
+      "name": "Felipe",
+      "email": "felipemarshmello@gmail.com",
+      "numero": " 11 89319391313",
+      "endereco": "RUA Suriname"
+    }
+  ],
   "suppliers": []
 }
