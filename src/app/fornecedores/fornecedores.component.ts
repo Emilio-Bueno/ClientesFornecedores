@@ -11,7 +11,7 @@ import { Fornecedores } from '../Fornecedores';
 })
 export class FornecedoresComponent {
   Fornecedores: Fornecedores[] = [];
-  isEditing : boolean = false;
+  isEditing: boolean = false;
   formGroupClient: FormGroup;
   submitted: boolean = false;
   form: any;
@@ -35,11 +35,11 @@ export class FornecedoresComponent {
     this.submitted = true;
     if (this.formGroupClient.invalid) {
       return;
+    }
   }
-}
 
 
-  clean(){
+  clean() {
     this.formGroupClient.reset();
     this.isEditing = false;
     this.submitted = false;
@@ -48,14 +48,14 @@ export class FornecedoresComponent {
   save() {
     this.submitted = true;
     if (this.formGroupClient.valid) {
-      if (this.isEditing){
+      if (this.isEditing) {
         this.FornecedoresService.update(this.formGroupClient.value).subscribe({
           next: () => {
             this.loadFornecedores();
             this.formGroupClient.reset();
             this.isEditing = false;
             this.submitted = false;
-            }
+          }
         });
 
       }
@@ -69,7 +69,7 @@ export class FornecedoresComponent {
         })
       }
     }
-    }
+  }
 
   loadFornecedores() {
     this.FornecedoresService.getFornecedores().subscribe({

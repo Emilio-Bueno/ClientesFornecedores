@@ -12,19 +12,19 @@ export class FornecedoresService {
   url = "http://localhost:3000/suppliers";
   constructor(private http: HttpClient) { }
 
-  getFornecedores(): Observable<Fornecedores[]>{
+  getFornecedores(): Observable<Fornecedores[]> {
     return this.http.get<Fornecedores[]>(this.url);
   }
 
-  save(Fornecedores : Fornecedores) : Observable<Fornecedores>{
+  save(Fornecedores: Fornecedores): Observable<Fornecedores> {
     return this.http.post<Fornecedores>(this.url, Fornecedores);
-}
+  }
 
-update(Fornecedores: Fornecedores) : Observable<Fornecedores>{
-  return this.http.put<Fornecedores>(`${this.url}/${Fornecedores.id}`, Fornecedores);
-}
+  update(Fornecedores: Fornecedores): Observable<Fornecedores> {
+    return this.http.put<Fornecedores>(`${this.url}/${Fornecedores.id}`, Fornecedores);
+  }
 
-delete(Fornecedores: Fornecedores) : Observable<void>{
-  return this.http.delete<void>(`${this.url}/${Fornecedores.id}`);
-}
+  delete(Fornecedores: Fornecedores): Observable<void> {
+    return this.http.delete<void>(`${this.url}/${Fornecedores.id}`);
+  }
 }

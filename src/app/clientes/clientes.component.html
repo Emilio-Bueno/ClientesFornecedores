@@ -1,52 +1,96 @@
 <div class="row">
   <div class="col-8 m-auto">
     <form [formGroup]="formGroupClient">
-    <div class="mb-3">
-      <div class="display-6 text-center">
-        Cadastro de Clientes
+      <div class="mb-3">
+        <div class="display-6 text-center">
+          Cadastro de Clientes
+        </div>
+        <div class="mb-3">
+        <b>Selecione seu Gênero: </b>
+        <div class="form-check">
+          <input formControlName="genero" class="form-check-input" value="Masculino" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Masculino
+          </label>
+        </div>
+        <div class="form-check">
+          <input formControlName="genero" class="form-check-input" value="Feminino" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Feminino
+          </label>
+        </div>
+        <div class="form-check">
+          <input formControlName="genero" class="form-check-input" value="Outros" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+          <label class="form-check-label" for="flexRadioDefault1">
+            Outros
+          </label>
+        </div>
+        <div class="form-check">
+          <input formControlName="genero" class="form-check-input" value="Prefiro Não Dizer" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+          <label class="form-check-label" for="flexRadioDefault2">
+            Prefiro não dizer
+          </label>
+        </div>
       </div>
-      <label for="name" class="form-label">Nome:</label>
-      <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nome">
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email:</label>
-      <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
-    </div>
-    <div class="mb-3">
-      <label for="numero" class="form-label">Numero:</label>
-      <input type="numero" formControlName="numero" class="form-control" id="numero" placeholder="Numero">
-    </div>
-    <label for="endereco" class="form-label">Endereco:</label>
-    <input type="endereco" formControlName="endereco" class="form-control" id="endereco" placeholder="Endereço">
-    <div class="mb-3 d-flex justify-content-end">
-      <button class="btn btn-primary me-1 mt-2" (click)="save()">Salvar</button>
-      <button class="btn btn-primary mt-2" (click)="clean()">Limpar</button>
-    </div>
+        <label for="name" class="form-label">Nome:</label>
+        <input type="text" formControlName="name" class="form-control" id="name" placeholder="Nome">
+      </div>
+      <div class="mb-3">
+        <label for="email" class="form-label">Email:</label>
+        <input type="email" formControlName="email" class="form-control" id="email" placeholder="Email">
+      </div>
+      <div class="mb-3">
+        <label for="numero" class="form-label">Numero:</label>
+        <input type="numero" formControlName="numero" class="form-control" id="numero" placeholder="Numero">
+      </div>
+      <div class="mb-3">
+        <label for="endereco" class="form-label">Endereco:</label>
+        <input type="endereco" formControlName="endereco" class="form-control" id="endereco" placeholder="Endereço">
+      </div>
+      <div class="mb-3">
+        <label for="regiao" class="form-label">Região:</label>
+        <select formControlName="regiao" class="form-select" id="regiao">
+          <option disabled="true" value="">Selecione sua Região</option>
+          <option value="Sudeste">Sudeste</option>
+          <option value="Norte">Norte</option>
+          <option value="Sul">Sul</option>
+          <option value="Centro-Oeste">Centro-Oeste</option>
+          <option value="Nordeste">Nordeste</option>
+        </select>
+      </div>
+      <div class="mb-3 d-flex justify-content-end">
+        <button class="btn btn-primary me-1 mt-2" (click)="save()">Salvar</button>
+        <button class="btn btn-primary mt-2" (click)="clean()">Limpar</button>
+      </div>
     </form>
   </div>
-<table class="table table-bordered border-dark">
-  <thead class="table-dark ">
-    <tr class="table-active">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Nome</th>
-      <th scope="col">Email</th>
-      <th scope="col">Numero</th>
-      <th scope="col">endereco</th>
-      <th scope="col">Opções</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let Clientes of Clientes">
-      <th scope="row">{{Clientes.id}}</th>
-      <td>{{Clientes.name}}</td>
-      <td>{{Clientes.email}}</td>
-      <td>{{Clientes.numero}}</td>
-      <td>{{Clientes.endereco}}</td>
-      <td>
-        <button class="btn btn-primary me-1" (click)="edit(Clientes)">Editar</button>
-        <button class="btn btn-primary" (click)="delete(Clientes)">Excluir</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <table class="table table-bordered border-dark">
+    <thead class="table-dark ">
+      <tr class="table-active">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Gênero</th>
+        <th scope="col">Email</th>
+        <th scope="col">Numero</th>
+        <th scope="col">Endereco</th>
+        <th scope="col">Região</th>
+        <th scope="col">Opções</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let Clientes of Clientes">
+        <th scope="row">{{Clientes.id}}</th>
+        <td>{{Clientes.name}}</td>
+        <td>{{Clientes.genero}}</td>
+        <td>{{Clientes.email}}</td>
+        <td>{{Clientes.numero}}</td>
+        <td>{{Clientes.endereco}}</td>
+        <td>{{Clientes.regiao}}</td>
+        <td>
+          <button class="btn btn-primary me-1" (click)="edit(Clientes)">Editar</button>
+          <button class="btn btn-primary" (click)="delete(Clientes)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

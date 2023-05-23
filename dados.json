@@ -2,11 +2,28 @@
   "clients": [
     {
       "id": 1,
-      "name": "Felipe",
-      "email": "felipemarshmello@gmail.com",
-      "numero": " 11 89319391313",
-      "endereco": "RUA Suriname"
+      "name": "Marshmello_96",
+      "genero": "Masculino",
+      "email": "marshmello_96514@gmail.com",
+      "numero": "1231321032194",
+      "endereco": "Rua Casa do Caraio, 39",
+      "regiao": "Sudeste"
     }
   ],
-  "suppliers": []
+  "suppliers": [
+    {
+      "id": 1,
+      "name": "dsakld lkasjdlsajlkj",
+      "telefone": "jdlskajldjas",
+      "endereco": "jdlksjaldjsajlkds",
+      "acceptTerms": true
+    },
+    {
+      "id": 2,
+      "name": "Mdsamdlk sam",
+      "telefone": "mlksmdldmsalk",
+      "endereco": "mlkmdslkmdlsa",
+      "acceptTerms": true
+    }
+  ]
 }

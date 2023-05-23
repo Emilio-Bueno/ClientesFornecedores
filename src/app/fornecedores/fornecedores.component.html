@@ -14,57 +14,57 @@
       <input type="endereco" formControlName="endereco" class="form-control" id="endereco" placeholder="Endereço" />
       <div class="mb-3 d-flex justify-content-end">
         <div class="mb-3 d-flex justify-content-center">
-            <div class="form-group form-check">
-              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
-                [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors } " />
-              <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+          <div class="form-group me-2 mt-3 form-check">
+            <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+              [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors } " />
+            <label for="acceptTerms" class="form-check-label">Aceitar os termos e condições</label>
 
-              <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
-                Aceite os termos de uso
-              </div>
+            <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">
+              Aceite os termos de uso
             </div>
-            <div>
-              <button class="btn btn-primary mt-2 me-2" (click)="save()">
-                Submit
-              </button>
+          </div>
+          <div>
+            <button class="btn btn-primary mt-2 me-2" (click)="save()">
+              Salvar
+            </button>
 
-              <button class="btn btn-primary mt-2" (click)="clean()">
-                Limpar
-              </button>
-            </div>
+            <button class="btn btn-primary mt-2" (click)="clean()">
+              Limpar
+            </button>
+          </div>
         </div>
-        </div>
-        </form>
+      </div>
+    </form>
 
 
-          <table class="table table-bordered border-dark">
-            <thead class="table-dark">
-              <tr class="table-active"></tr>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">endereco</th>
-                <th scope="col">Opções</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let Fornecedores of Fornecedores">
-                <th scope="row">{{ Fornecedores.id }}</th>
-                <td>{{ Fornecedores.name }}</td>
-                <td>{{ Fornecedores.telefone }}</td>
-                <td>{{ Fornecedores.endereco }}</td>
-                <td>
-                  <button class="btn btn-primary me-1" (click)="edit(Fornecedores)">
-                    Editar
-                  </button>
-                  <button class="btn btn-primary" (click)="delete(Fornecedores)">
-                    Excluir
-                  </button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+    <table class="table table-bordered border-dark">
+      <thead class="table-dark">
+        <tr class="table-active"></tr>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nome</th>
+          <th scope="col">Telefone</th>
+          <th scope="col">endereco</th>
+          <th scope="col">Opções</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let Fornecedores of Fornecedores">
+          <th scope="row">{{ Fornecedores.id }}</th>
+          <td>{{ Fornecedores.name }}</td>
+          <td>{{ Fornecedores.telefone }}</td>
+          <td>{{ Fornecedores.endereco }}</td>
+          <td>
+            <button class="btn btn-primary me-1" (click)="edit(Fornecedores)">
+              Editar
+            </button>
+            <button class="btn btn-primary" (click)="delete(Fornecedores)">
+              Excluir
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
 
   </div>

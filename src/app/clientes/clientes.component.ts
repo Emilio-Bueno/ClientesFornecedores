@@ -10,26 +10,28 @@ import { ClientesService } from './../clientes.service';
 })
 export class ClientesComponent {
   Clientes: Clientes[] = [];
-  isEditing : boolean = false;
+  isEditing: boolean = false;
   formGroupClient: FormGroup;
 
   constructor(private ClientesService: ClientesService, private formBuilder: FormBuilder) {
     this.formGroupClient = formBuilder.group({
       id: [''],
       name: [''],
+      genero: [''],
       email: [''],
       numero: [''],
-      endereco: ['']
+      endereco: [''],
+      regiao: ['']
     });
   }
 
-  clean(){
+  clean() {
     this.formGroupClient.reset();
     this.isEditing = false;
   }
 
   save() {
-    if (this.isEditing){
+    if (this.isEditing) {
       this.ClientesService.update(this.formGroupClient.value).subscribe({
         next: () => {
           this.loadClientes();
