@@ -13,7 +13,7 @@ export class FornecedoresComponent {
   Fornecedores: Fornecedores[] = [];
   isEditing : boolean = false;
   formGroupClient: FormGroup;
-  submitted = false;
+  submitted: boolean = false;
   form: any;
 
   constructor(private FornecedoresService: FornecedoresService, private formBuilder: FormBuilder) {
@@ -21,55 +21,55 @@ export class FornecedoresComponent {
       id: [''],
       name: [''],
       telefone: [''],
-      endereco: ['']
+      endereco: [''],
+      acceptTerms: [false, Validators.requiredTrue]
     });
   }
   ngOnInit(): void {
     this.loadFornecedores();
-    this.form = this.formBuilder.group({
-      acceptTerms: [false, Validators.requiredTrue]
-  });
   }
-  get f() { return this.form.controls; }
+
+  get f() { return this.formGroupClient.controls; }
+
   onSubmit() {
     this.submitted = true;
-    if (this.form.invalid) {
+    if (this.formGroupClient.invalid) {
       return;
   }
-  alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.form.value, null, 4));
 }
 
-onReset() {
-    this.submitted = false;
-    this.form.reset();
-}
 
   clean(){
     this.formGroupClient.reset();
     this.isEditing = false;
+    this.submitted = false;
   }
 
   save() {
-    if (this.isEditing){
-      this.FornecedoresService.update(this.formGroupClient.value).subscribe({
-        next: () => {
-          this.loadFornecedores();
-          this.formGroupClient.reset();
-          this.isEditing = false;
-        }
-      });
+    this.submitted = true;
+    if (this.formGroupClient.valid) {
+      if (this.isEditing){
+        this.FornecedoresService.update(this.formGroupClient.value).subscribe({
+          next: () => {
+            this.loadFornecedores();
+            this.formGroupClient.reset();
+            this.isEditing = false;
+            this.submitted = false;
+            }
+        });
 
+      }
+      else {
+        this.FornecedoresService.save(this.formGroupClient.value).subscribe({
+          next: data => {
+            this.Fornecedores.push(data);
+            this.formGroupClient.reset();
+            this.submitted = false;
+          }
+        })
+      }
     }
-    else {
-      this.FornecedoresService.save(this.formGroupClient.value).subscribe({
-        next: data => {
-          this.Fornecedores.push(data);
-          this.formGroupClient.reset();
-        }
-      })
     }
-  }
-
 
   loadFornecedores() {
     this.FornecedoresService.getFornecedores().subscribe({
